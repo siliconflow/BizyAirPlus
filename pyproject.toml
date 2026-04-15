@@ -29,7 +29,7 @@ Documentation = "https://github.com/siliconflow/BizyAirPlus/wiki"
 "Bug Tracker" = "https://github.com/siliconflow/BizyAirPlus/issues"
 
 [tool.comfy]
-PublisherId = "BizyAirPlus"
+PublisherId = "siliconflowbizyair"
 DisplayName = "BizyAirPlus"
 Icon = ""
 includes = [] 
