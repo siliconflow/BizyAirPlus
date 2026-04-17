@@ -1,6 +1,6 @@
 [project]
 name = "bizyairplus"
-description = ""
+description = "Run your workflow on cloud"
 version = "1.0.1"
 license = "MIT" 
 # classifiers = [
