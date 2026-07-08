@@ -1,0 +1,10 @@
+{
+  "BizyAirPlus_enabled": {
+    "name": "Enable BizyAirPlus Mode",
+    "tooltip": "Run supported workflows in BizyAirPlus cloud mode."
+  },
+  "BizyAirPlus_apikey": {
+    "name": "BizyAir API Key",
+    "tooltip": "API key used to access BizyAirPlus cloud execution."
+  }
+}
