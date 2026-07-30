@@ -1,67 +1,119 @@
-# BizyAirPlus
+# <img src="public/BizyAir.svg" alt="BizyAir" width="40" height="40"> BizyAirPlus
 
-ComfyUI 插件，无缝实现本地工作流工作流云端执行。
+**English** | [简体中文](README.zh-CN.md)
 
-## 功能特性
+BizyAirPlus brings BizyAir cloud execution to ComfyUI while preserving the familiar local workflow editing experience. Build and edit workflows locally, submit them to BizyAir for execution, and receive progress updates and results directly in ComfyUI.
 
-### 一键切换云端模式
+## Features
 
-在 ComfyUI 运行下拉菜单选择 **「运行（BizyAirPlus）」** 模式后，执行的工作流自动在云端运行，保持本地 UI 操作体验。
-![select](public/select.png)
+- Switch between cloud and local execution from a dedicated **BizyAirPlus ON/OFF** button in the ComfyUI action bar.
+- Select cloud models directly from supported model widgets, including LoRA, Checkpoint, ControlNet, and VAE models.
+- Filter models by type, base model, and keyword, and browse community or personal models.
+- Use promoted model widgets, nested subgraphs, and multiple instances of the same subgraph.
+- Use model selection with both LiteGraph nodes and Vue Nodes (Node 2.0).
+- View live progress, previews, and results, with support for interrupting or cancelling a cloud task.
+- Automatically upload workflow inputs and return generated outputs to the local ComfyUI session.
+- Follow the language selected in ComfyUI.
 
-### 丰富的云端执行模型选择
+![BizyAirPlus ON/OFF switch](public/switch.png)
 
-可以在原来本地工作流的模型加载节点通过点击widget在社区中选择要执行的模型：
+![BizyAir model selector](public/community.png)
 
-- 支持 LoRA、Checkpoint、Controlnet、VAE 等模型类型筛选
-- 支持 Flux.2、Qwen-Image、Z-Image 等基础模型筛选
-- 支持关键词搜索
-- 我的模型 / 社区模型 / 官方模型
+## Installation
 
-![community](public/community.png)
-
-### 任务管理
-
-支持实时进度查看、任务中断和取消。
-
-## 安装
-
-1. 克隆该仓库到本地Comfyui的custom_node目录下
+Clone this repository into the ComfyUI `custom_nodes` directory, then install its dependencies with the same Python environment used to run ComfyUI:
 
 ```bash
+cd /path/to/ComfyUI/custom_nodes
 git clone https://github.com/siliconflow/BizyAirPlus.git
+cd BizyAirPlus
+python -m pip install -r requirements.txt
 ```
+
+Restart ComfyUI after installation.
+
+On startup, BizyAirPlus ensures that its required packages are installed and checks PyPI for a newer `bizyair-cloudberry` release.
+
+- Set `BIZYAIRPLUS_SKIP_UPDATE=1` to skip the latest-version check.
+- Set `BIZYAIRPLUS_CHECK_ONLY=1` to report an available update without installing that update.
+
+Required dependency versions may still be installed even when either option is enabled.
+
+## Getting Started
+
+1. Start ComfyUI and find the **BizyAirPlus** button in the action bar.
+2. Click the button to turn BizyAirPlus **ON**.
+3. If this is your first time using BizyAir, visit [bizyair.ai](https://bizyair.ai), create an account, and obtain an API Key. Enter the key when prompted.
+4. Click a supported model widget and choose a model from the BizyAir model selector.
+5. Queue the workflow as usual.
+6. Follow its progress in ComfyUI and retrieve the result when execution finishes.
+
+Turn the BizyAirPlus button **OFF** whenever you want to return to local execution.
+
+Example workflows are available in [`example_workflows/`](example_workflows/).
+
+## Configuration
+
+### API Key
+
+First-time users should visit [bizyair.ai](https://bizyair.ai), create an account, and obtain an API Key. The easiest way to configure the key is to turn BizyAirPlus on and use the prompt that appears. You can also set it from:
+
+```text
+Settings > BizyAirPlus > API Key
+```
+
+The saved key is stored at:
+
+```text
+~/.BizyAirPlus/apikey.ini
+```
+
+Alternatively, set the `BIZYAIR_API_KEY` environment variable. An environment variable takes precedence over the saved key.
+
+Linux and macOS:
 
 ```bash
-cd BizyAirPlus
-pip install -r requirements.txt
+export BIZYAIR_API_KEY=sk-xxxxxx
 ```
 
-安装后重启 ComfyUI，插件自动加载。
+Windows PowerShell:
 
-## 配置
+```powershell
+$env:BIZYAIR_API_KEY="sk-xxxxxx"
+```
 
-### 设置 API Key
+### Language
 
-插件需要 BizyAir API Key 才能使用：
-请先前往bizyair.cn注册账户获取apikey
+Change the interface language from:
 
-## 使用
+```text
+Settings > Comfy > Locale
+```
 
-1. 启动 ComfyUI
-2. 在运行按钮下来菜单中选择 **运行（BizyAirPlus）**
-3. 如未配置 API Key，按提示输入
-4. 构建工作流后点击 **执行**
-5. 工作流自动在云端运行，进度实时回传
-6. 执行完成后结果自动返回本地
+BizyAirPlus settings are translated into English, Simplified Chinese, and Traditional Chinese. Runtime controls, prompts, and the model selector currently use English or Simplified Chinese.
 
-## 常见问题
+## Troubleshooting
 
-**Q: 提示 API Key 未设置？**
-A: 请在 BizyAirPlus 模式界面输入你的 API Key，或设置环境变量 `BIZYAIR_API_KEY`。
+### The BizyAirPlus button is missing
 
-**Q: 云端执行失败？**
-A: 检查 API Key 是否有效，网络连接是否正常，或查看 ComfyUI 控制台错误日志。
+Make sure the dependencies were installed with the Python environment used by ComfyUI, then restart ComfyUI. You can check the installed runtime package with:
 
-**Q: 如何切换回本地执行？**
-A: 关闭 BizyAirPlus 模式即可恢复本地执行。
+```bash
+python -m pip show bizyair-cloudberry
+```
+
+### BizyAirPlus reports that the API Key is missing
+
+Enter the key through the BizyAirPlus prompt or `Settings > BizyAirPlus > API Key`, or set `BIZYAIR_API_KEY` before starting ComfyUI.
+
+### Cloud execution fails
+
+Check that the API Key is valid and the network is available. The ComfyUI console usually contains the detailed error.
+
+### How do I switch back to local execution?
+
+Click the BizyAirPlus action-bar button so that it displays **OFF**.
+
+## Support
+
+Report problems or request features through [GitHub Issues](https://github.com/siliconflow/BizyAirPlus/issues).

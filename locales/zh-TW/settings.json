@@ -1,10 +1,10 @@
 {
   "BizyAirPlus_enabled": {
-    "name": "启用 BizyAirPlus 模式",
-    "tooltip": "使用 BizyAirPlus 云端模式运行支持的工作流。"
+    "name": "啟用 BizyAirPlus 模式",
+    "tooltip": "使用 BizyAirPlus 雲端模式執行支援的工作流程。"
   },
   "BizyAirPlus_apikey": {
     "name": "BizyAir API Key",
-    "tooltip": "用于访问 BizyAirPlus 云端执行服务的 API Key。"
+    "tooltip": "用於存取 BizyAirPlus 雲端執行服務的 API Key。"
   }
 }
