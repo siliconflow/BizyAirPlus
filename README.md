@@ -19,6 +19,8 @@ BizyAirPlus brings BizyAir cloud execution to ComfyUI while preserving the famil
 
 ![BizyAir model selector](public/community_en.png)
 
+![BizyAirPlus workflow](public/workflow.png)
+
 ## Installation
 
 Clone this repository into the ComfyUI `custom_nodes` directory, then install its dependencies with the same Python environment used to run ComfyUI:

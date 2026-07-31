@@ -19,6 +19,8 @@ BizyAirPlus 为 ComfyUI 提供 BizyAir 云端执行能力，同时保留熟悉�
 
 ![BizyAir 模型选择器](public/community.png)
 
+![BizyAirPlus workflow](public/workflow.png)
+
 ## 安装
 
 将本仓库克隆到 ComfyUI 的 `custom_nodes` 目录，并使用启动 ComfyUI 的同一个 Python 环境安装依赖：
