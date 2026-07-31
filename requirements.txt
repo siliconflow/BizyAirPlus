@@ -1,2 +1,2 @@
-bizyair-cloudberry
-bizytrd
+bizyair-cloudberry>=0.3.0
+bizytrd>=0.1.8
