@@ -17,7 +17,7 @@ BizyAirPlus brings BizyAir cloud execution to ComfyUI while preserving the famil
 
 ![BizyAirPlus ON/OFF switch](public/switch.png)
 
-![BizyAir model selector](public/community.png)
+![BizyAir model selector](public/community_en.png)
 
 ## Installation
 
